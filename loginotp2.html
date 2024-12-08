@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Login</title>
+    <style>
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .otp-section {
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LOGIN TO CONTINUE:</h1>
+        <!-- Mobile Login Section -->
+        <div id="login-section">
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="text" id="mobile" placeholder="Enter your mobile number">
+            </div>
+            <button class="btn" id="send-otp-btn" onclick="sendOTP()">Send OTP</button>
+        </div>
+
+        <!-- OTP Section -->
+        <div id="otp-section" class="otp-section">
+            <div class="form-group">
+                <label for="otp">Enter OTP</label>
+                <input type="text" id="otp" placeholder="Enter the OTP">
+            </div>
+            <button class="btn" id="verify-otp-btn" onclick="verifyOTP()">Verify OTP</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle "Send OTP"
+        function sendOTP() {
+            const mobile = document.getElementById('mobile').value;
+            if (mobile) {
+                alert(`OTP sent to ${mobile}`);
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('otp-section').style.display = 'block';
+                document.getElementById('otp').focus();
+            } else {
+                alert('Please enter your mobile number');
+            }
+        }
+
+        // Function to handle "Verify OTP"
+        function verifyOTP() {
+            const otp = document.getElementById('otp').value;
+            if (otp) {
+                alert(`OTP Verified: ${otp}`);
+            } else {
+                alert('Please enter the OTP');
+            }
+        }
+
+        // Handle keyboard events
+        document.addEventListener('keydown', (event) => {
+            const activeElement = document.activeElement;
+
+            if (event.key === 'Enter') {
+                // Check which field is active
+                if (activeElement.id === 'mobile') {
+                    sendOTP();
+                } else if (activeElement.id === 'otp') {
+                    verifyOTP();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

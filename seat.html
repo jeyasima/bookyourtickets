@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinema Ticket Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      margin: 20px;
+      color: #333;
+    }
+
+    .screen {
+      width:70%;
+      height: 150px;
+      background: #ddd;
+      text-align: center;
+      line-height: 30px;
+      margin: 20px 0;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+
+    .seat-container {
+      display: grid;
+      grid-template-columns: repeat(10, 40px);
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .seat {
+      width: 40px;
+      height: 40px;
+      background-color: #ccc;
+      border: 1px solid #999;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .seat.selected {
+      background-color: #6c63ff;
+      color: white;
+    }
+
+    .seat.occupied {
+      background-color: #ff4c4c;
+      cursor: not-allowed;
+    }
+
+    .button-container {
+      margin: 20px;
+    }
+
+    .proceed-button {
+      padding: 10px 20px;
+      background-color: #6c63ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .proceed-button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cinema Ticket Booking</h1>
+  <div class="screen">Screen</div>
+  <div class="seat-container" id="seat-container">
+    <!-- Seats will be generated dynamically -->
+  </div>
+  <div class="button-container">
+    <button id="proceed-button" class="proceed-button" disabled>Proceed to Pay</button>
+  </div>
+
+  <script>
+    const seatContainer = document.getElementById('seat-container');
+    const proceedButton = document.getElementById('proceed-button');
+
+    const totalSeats = 100;
+    const occupiedSeats = [15, 25, 36, 50]; // Example occupied seats
+
+    // Generate seats dynamically
+    for (let i = 1; i <= totalSeats; i++) {
+      const seat = document.createElement('div');
+      seat.classList.add('seat');
+      seat.textContent = i;
+
+      if (occupiedSeats.includes(i)) {
+        seat.classList.add('occupied');
+      } else {
+        seat.addEventListener('click', () => {
+          seat.classList.toggle('selected');
+          updateProceedButton();
+        });
+      }
+
+      seatContainer.appendChild(seat);
+    }
+
+    function updateProceedButton() {
+      const selectedSeats = document.querySelectorAll('.seat.selected');
+      proceedButton.disabled = selectedSeats.length === 0;
+    }
+
+    proceedButton.addEventListener('click', () => {
+      const selectedSeats = [...document.querySelectorAll('.seat.selected')].map(
+        seat => seat.textContent
+      );
+      alert(`Proceeding to pay for seats: ${selectedSeats.join(', ')}`);
+    });
+  </script>
+</body>
+</html>

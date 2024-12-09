@@ -2,88 +2,174 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookyourShow</title>
-    <link rel="stylesheet" href="style1.css">
+    <title>LOGIN :</title>
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            animation: gradientBackground 5s infinite alternate;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        @keyframes gradientBackground {
+            0% { background: linear-gradient(135deg, #b58ce0, #91b0e4); }
+            50% { background: linear-gradient(135deg, #ca6b50, #bbad91); }
+            100% { background: linear-gradient(135deg, #899994, #637383); }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            animation: zoomIn 1s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1rem;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus {
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .otp-section {
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <div class="logo">BookyourShow</div>
-        <nav class="nav">
-            <ul>
-                <li><a href="#movies">Movies</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#plays">Plays</a></li>
-                <li><a href="#sports">Sports</a></li>
-                <li><a href="#offers">Offers</a></li>
-            </ul>
-        </nav>
-        <div class="user-options">
-                <button class="btn-login">Logged in</button>
-        </div>
-        
-    </header>
-    
-    <section class="hero-section">
-        <div class="hero-text">
-            <h1>Welcome to BookMyShow</h1>
-            <p>Discover the best movies, events, plays, and more!</p>
-            <button class="btn-explore">Explore Now</button>
-        </div>
-    </section>
-
-    <section id="movies" class="movies-section">
-        <h2>Now Showing</h2>
-        <div class="movies-grid">
-
-
-            <div class="movie-card">
-                <a href="http://127.0.0.1:5501/seat.html" target="_blank">
-                    <img src="movie1.jpg" alt="movie 1">
-                    </a>                
-                <h3><a href="http://127.0.0.1:5501/seat.html" target="_blank">Amaran</a></h3>
-                </div>
-
-
-            <div class="movie-card">
-                <a href="http://127.0.0.1:5501/seat.html">
-                    <img src="movie2.jpg" alt="movie 2">
-                </a>                
-                <h3><a href="http://127.0.0.1:5501/seat.html" target="_blank">Amaran</a></h3>
-                </div>
-
-
-                <div class="movie-card">
-                <a href="http://127.0.0.1:5501/seat.html">
-                    <img src="movie3.jpg" alt="movie 3">
-                </a>                
-                <h3><a href="http://127.0.0.1:5501/seat.html" target="_blank">Amaran</a></h3>
-                </div>
-        </div>
-    </section>
-    
-    <section id="movies" class="movie0-section">
-        <h2>Upcoming Movies</h2>
-        <div class="movies-grid">
-            <div class="movie-card">
-                <img src="movie1.jpg" alt="movie 1">
-                <h3>kanguva</h3>
+    <div class="container">
+        <h1>LOGIN TO CONTINUE :</h1>
+        <!-- Mobile Login Section -->
+        <div id="login-section">
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="text" id="mobile" placeholder="Enter your mobile number">
             </div>
-            <div class="movie-card">
-                <img src="movie2.jpg" alt="Movie 2">
-                <h3>Amaran</h3>
-            </div>
-            <div class="movie-card">
-                <img src="movie3.jpg" alt="Movie 3">
-                <h3>Lucky Baskhar</h3>
-            </div>
+            <button class="btn" onclick="sendOTP()">Send OTP</button>
         </div>
-    </section>
+           
+        <!-- OTP Section -->
+        <div id="otp-section" class="otp-section">
+            <div class="form-group">
+                <label for="otp">Enter OTP</label>
+                <input type="text" id="otp" placeholder="Enter the OTP">
+            </div>
+            <button class="btn" onclick="verifyOTP()">Verify OTP</button>
+        </div>
+    </div>
 
+    <script>
+        function sendOTP() {
+            const mobileInput = document.getElementById('mobile').value;
+            if (!mobileInput) {
+                alert('Please enter your mobile number.');
+                return;
+            }
 
-    <footer class="footer">
-        <p>&copy; 2024 BookMyShow Clone. All Rights Reserved.</p>
-    </footer>
+            // Simulate OTP sending
+            alert('OTP sent to ' + mobileInput);
+
+            // Switch to OTP section
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('otp-section').style.display = 'block';
+        }
+
+        function verifyOTP() {
+            const otpInput = document.getElementById('otp').value;
+            if (!otpInput) {
+                alert('Please enter the OTP.');
+                return;
+            }
+
+            // Simulate OTP verification
+            alert('OTP verified successfully! Redirecting...');
+
+            // Redirect to the next page
+            window.location.href = 'http://127.0.0.1:5501/maincode2.html'; // Update with your actual target URL
+        }
+    </script>
 </body>
 </html>
